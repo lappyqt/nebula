@@ -1,0 +1,30 @@
+﻿@{
+    string? avatarURI = Context.User.FindFirst("AvatarURI")?.Value;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula</title>
+    <link rel="stylesheet" href="~/styles/index.css">
+    @RenderSection("styles", false)
+</head>
+<body>
+    <nav class="navbar">
+        <span class="app-title">Nebula</span>
+
+        @if (@User.Identity!.IsAuthenticated) 
+        {
+            <img class="profile-avatar" src="@avatarURI" />   
+        }
+    </nav>
+
+    <div id="app">
+        @RenderBody()
+    </div>
+
+    @RenderSection("scripts", false)
+</body>
+</html>

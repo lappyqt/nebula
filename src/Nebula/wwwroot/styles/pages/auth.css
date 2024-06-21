@@ -1,0 +1,8 @@
+#app {
+    display: grid;
+    place-content: center;
+}
+
+a {
+    color: white;
+}
