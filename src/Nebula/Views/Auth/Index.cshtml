@@ -2,6 +2,16 @@
     <link rel="stylesheet" href="~/styles/pages/auth.css">
 }
 
-<a href="https://discord.com/oauth2/authorize?client_id=1253405458111397959&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5234%2Fauth%2Fdiscord&scope=identify+email">
-Auth
-</a>
+<div class="authorization-form" x-data="auth">
+    <div class="left-side">
+        <p class="title">Authorization</p>
+        <p class="text">Authorize with one of the social media applications to store your passwords</p>
+        <div class="background"></div>
+    </div>
+    <div class="right-side">
+        <div class="auth-buttons">
+            <button class="auth-button discord" x-on:click="redirectToDiscord">Discord</button>
+            <button class="auth-button apple">Apple</button>
+        </div>
+    </div>
+</div>

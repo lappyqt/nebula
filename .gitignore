@@ -3,3 +3,5 @@ obj/
 .vscode/
 .idea/
 .vs/
+node_modules/
+src/Nebula/wwwroot/dist/

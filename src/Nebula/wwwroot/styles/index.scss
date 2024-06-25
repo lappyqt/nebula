@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
-@import url("./variables.css");
+@import "./variables.scss";
 
-@import url("./components/navbar.css");
+@import "./components/navbar.scss";
+@import "./components/button.scss";
 
 * {
     margin: 0;
@@ -20,4 +21,8 @@ body {
     font-style: normal;
     color: white;
     background-color: var(--body-background-color);
+}
+
+[x-cloak] {
+    display: none;
 }

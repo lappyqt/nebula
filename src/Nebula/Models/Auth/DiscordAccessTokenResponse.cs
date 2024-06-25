@@ -10,7 +10,7 @@ public class DiscordAccessTokenResponse
     [JsonProperty(PropertyName = "token_type")]
     public string TokenType { get; init ;} = string.Empty;
 
-    [JsonProperty(PropertyName = "experes_in")]
+    [JsonProperty(PropertyName = "expires_in")]
     public int ExpiresIn { get; init; }
 
     [JsonProperty(PropertyName = "refresh_token")]
