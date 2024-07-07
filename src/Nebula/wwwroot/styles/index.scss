@@ -4,6 +4,9 @@
 
 @import "./components/navbar.scss";
 @import "./components/button.scss";
+@import "./components/search-bar.scss";
+@import "./components/password-card.scss";
+@import "./components/dropdown.scss";
 
 * {
     margin: 0;
@@ -21,6 +24,11 @@ body {
     font-style: normal;
     color: white;
     background-color: var(--body-background-color);
+}
+
+input {
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
 }
 
 [x-cloak] {

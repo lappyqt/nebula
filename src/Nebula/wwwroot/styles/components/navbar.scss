@@ -4,7 +4,8 @@
     background-color: var(--navbar-background-color);
     display: flex;
     align-items: center;
-    position: relative;
+    position: sticky;
+    z-index: 1000;
 
     .app-title {
         font-size: 18px;

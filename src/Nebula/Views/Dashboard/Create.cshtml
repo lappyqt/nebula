@@ -1,0 +1,30 @@
+@using System.Security.Claims;
+
+@{
+    string? ownerId = Context.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)!.Value;
+}
+
+@section styles {
+    <link rel="stylesheet" href="~/styles/pages/create.css">
+}
+
+<div class="container" x-data>
+    <span class="page-title">Create new password</span>
+
+    <div class="password-container">
+        <form method="post" x-ref="passwordForm">
+            <div class="text-inputs">
+                <input class="text-input" type="text" name="Title" placeholder="Title">
+                <input class="text-input" type="text" name="ServiceURI" placeholder="Service URI">
+            </div>
+
+            <input type="hidden" name="OwnerId" value="@ownerId">
+            <input class="password-input" type="password" name="UnprotectedValue" placeholder="Password">
+        </form>
+    </div>
+
+    <div class="bottom-buttons">
+        <a href="/dashboard" class="text-button">Cancel</a>
+        <button class="default-button" x-on:click="$refs.passwordForm.submit()">Create</button>
+    </div>
+</div>

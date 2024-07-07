@@ -23,6 +23,13 @@ public class AuthController : Controller
     public async Task<IActionResult> Discord(string code)
     {
         await _service.AuthorizeThroughDiscord(code);
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index", "Dashboard");
+    }
+
+    [Route("/auth/signout")]
+    public async Task<IActionResult> LogOut()
+    {
+        await _service.SignOut();
+        return RedirectToAction("Index", "Auth");
     }
 }

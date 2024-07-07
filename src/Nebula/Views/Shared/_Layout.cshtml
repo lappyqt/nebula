@@ -1,5 +1,9 @@
-﻿@{
-    string? avatarURI = Context.User.FindFirst("AvatarURI")?.Value;
+﻿@using Nebula.Services
+@using Nebula.Domain.Abstractions.Services
+@inject IUserCredentialsService UserCredentialsService
+
+@{
+    var credentials = UserCredentialsService.GetCredentials();
 }
 
 <!DOCTYPE html>
@@ -14,12 +18,29 @@
     @RenderSection("styles", false)
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" x-data="dropdown">
         <span class="app-title">Nebula</span>
 
-        @if (@User.Identity!.IsAuthenticated) 
+        @if (@User.Identity!.IsAuthenticated && credentials is not null) 
         {
-            <img class="profile-avatar" src="@avatarURI" />   
+            <img class="profile-avatar" src="@credentials.AvatarURI" x-on:click="toggle" /> 
+
+            <div class="dropdown" x-show="visible" x-transition x-on:click.outside="clickOutside" x-cloak>
+                <div class="account-container">
+                    <img class="profile" src="@credentials.AvatarURI" />
+
+                    <div class="text-info">
+                        <span class="username">@credentials.Username</span>
+                        <span class="email">@credentials.Email</span>
+                    </div>
+                </div>
+
+                <div class="options">
+                    <a class="option-link">Generate</a>
+                    <a class="option-link">Settings</a>
+                    <button class="default-button sign-out" x-on:click="signOut">Sign out</button>
+                </div>
+            </div> 
         }
     </nav>
 

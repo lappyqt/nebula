@@ -1,0 +1,28 @@
+@using Nebula.Domain.Entities;
+@model List<Password> 
+
+@section styles {
+    <link rel="stylesheet" href="~/styles/pages/dashboard.css">
+}
+
+<div class="content-container" x-data="{
+        createPassword: () => {
+            location.assign('/dashboard/create');
+        }
+    }">
+    <input type="text" class="search-bar" placeholder="Type here to search for your passwords... " />
+
+    <div class="password-list">
+        @foreach(var password in Model)
+        {
+            <div class="password-card">
+                <span class="title">@password.Title</span>
+            </div>
+        }
+
+        <div class="password-card add-new-password"
+            x-on:click="createPassword">
+            <span class="title">Add new password</span>
+        </div>
+    </div>
+</div>

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Nebula.Controllers;
 
 [Controller]
-[Authorize]
+[AllowAnonymous]
 [Route("/")]
 public class HomeController : Controller
 {

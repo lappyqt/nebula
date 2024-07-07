@@ -45,6 +45,11 @@ public class AuthorizationService : IAuthorizationService
         await _accessor.HttpContext!.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
     }
 
+    public async Task SignOut()
+    {
+        await _accessor.HttpContext!.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+    }
+
     private async Task<DiscordAccessTokenResponse> GetDiscordAccessToken(string code)
     {
         var request = new RestRequest("/oauth2/token", Method.Post)

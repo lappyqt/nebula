@@ -4,6 +4,7 @@ button {
     font-style: normal;
     outline: none;
     border: none;
+    cursor: pointer;
 }
 
 .auth-button {
@@ -13,4 +14,24 @@ button {
     font-size: 18px;
     font-weight: 700;
     border-radius: 16px;
+}
+
+.default-button {
+    background: white;
+    padding: 7px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 30px;
+}
+
+.text-button {
+    background: transparent;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+
+.text-button:hover {
+    text-decoration: underline;
 }

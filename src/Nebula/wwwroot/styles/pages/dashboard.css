@@ -1,0 +1,18 @@
+#app {
+    display: grid;
+    place-content: center;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.content-container {
+    width: 1120px;
+    margin-top: 40px;
+}
+
+.password-list {
+    margin-top: 40px;
+}

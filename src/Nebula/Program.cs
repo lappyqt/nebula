@@ -1,6 +1,11 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Nebula.Domain.Abstractions.Services;
 using Nebula.Services;
+using Nebula.Persistence;
+using Microsoft.EntityFrameworkCore;
+using Nebula.Domain.Abstractions.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Nebula.Domain.Abstractions;
+using Nebula.Domain.Abstractions.Repositories;
+using Nebula.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -13,9 +18,19 @@ var builder = WebApplication.CreateBuilder(args);
             options.Cookie.Name = "Nebula_Authorization_Details";
         });
 
+    builder.Services.AddDataProtection();
     builder.Services.AddHttpContextAccessor();
+
+    builder.Services.AddTransient<IUserCredentialsService, UserCredentialsService>();
     
+    builder.Services.AddScoped<IPasswordRepository, PasswordRepository>();
+
     builder.Services.AddSingleton<IAuthorizationService, AuthorizationService>();
+    builder.Services.AddScoped<IPasswordService, PasswordService>();
+
+    builder.Services.AddDbContext<DatabaseCotnext>(options => {
+        options.UseNpgsql(builder.Configuration.GetConnectionString("Postgres"));
+    });
 }
 
 var app = builder.Build();
